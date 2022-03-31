@@ -1,4 +1,4 @@
-name: project-lifecycle
+name: test 
 on:
   workflow_dispatch
 
@@ -8,6 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install-jq
-        run: apt-get install jq
+        run: sudo apt-get install jq
       - name: complex jq 
         run: make check
