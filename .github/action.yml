@@ -1,0 +1,11 @@
+name: project-lifecycle
+on:
+  workflow_dispatch:
+
+jobs:
+  jqtest:
+   - uses: actions/checkout@v2
+   - name: Get SDK Version from config
+     uses: mikefarah/yq@master
+     with:
+       cmd: make check
