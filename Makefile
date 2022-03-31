@@ -1,3 +1,3 @@
 check:
-	@yq -n '.someNew="content"' > newfile.yml
-	@cat newfile.yaml
+	@yq --version
+	@echo '{"foo": "bar"}' | yq e '.foo' -
