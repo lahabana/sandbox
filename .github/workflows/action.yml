@@ -4,8 +4,8 @@ on:
 
 jobs:
   jqtest:
-   - uses: actions/checkout@v2
-   - name: Get SDK Version from config
-     uses: mikefarah/yq@master
-     with:
-       cmd: make check
+     - uses: actions/checkout@v2
+     - name: complex jq 
+       uses: mikefarah/yq@master
+       with:
+         cmd: make check
