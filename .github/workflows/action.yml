@@ -1,11 +1,13 @@
 name: project-lifecycle
 on:
-  workflow_dispatch:
+  workflow_dispatch
 
 jobs:
   jqtest:
-     - uses: actions/checkout@v2
-     - name: complex jq 
-       uses: mikefarah/yq@master
-       with:
-         cmd: make check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: complex jq 
+        uses: mikefarah/yq@master
+        with:
+          cmd: make check
