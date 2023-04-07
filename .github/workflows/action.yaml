@@ -9,7 +9,7 @@ on:
         default: false
         description: "check that everything is published correctly"
 env:
-  CHECK: ${{ inputs.check || false }}
+  CHECK: ${{ inputs.check }}
 jobs:
   example:
     runs-on: ubuntu-latest
