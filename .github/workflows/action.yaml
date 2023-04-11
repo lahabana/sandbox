@@ -1,4 +1,6 @@
 on:
+  schedule:
+    - cron: 0/5 * * * *
   workflow_dispatch:
     inputs:
       check:
@@ -12,5 +14,6 @@ jobs:
   example:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "${{ env.CHECK }}"
       - if: fromJSON(env.CHECK)
         run: echo "I'm running"
