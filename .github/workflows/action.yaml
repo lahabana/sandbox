@@ -12,13 +12,15 @@ on:
       arch:
         required: false
         default: "amd64"
+      githubRunnersByArch:
+        required: false
+        default: '{"amd64": "ubuntu-latest"}'
 env:
   CHECK: ${{ inputs.check || false }}
   ARCH: ${{ inputs.arch || 'amd64' }}
-  GITHUB_RUNNERS_BY_ARCH: '{"amd64": "ubuntu-latest"}'
-  RUNS_ON_CIRCLECI: ${{ !(fromJSON(env.GITHUB_RUNNERS_BY_ARCH)[env.ARCH]) }}
-  RUNS_ON_GITHUB: ${{ !(fromJSON(env.GITHUB_RUNNERS_BY_ARCH)[env.ARCH]) }}
-  RUNNER: ${{ fromJSON(env.GITHUB_RUNNERS_BY_ARCH)[env.ARCH] || 'ubuntu-latest' }}
+  RUNS_ON_CIRCLECI: ${{ !(fromJSON(inputs.githubRunnersByArch)[inputs.arch]) }}
+  RUNS_ON_GITHUB: ${{ !(fromJSON(inputs.githubRunnersByArch)[inputs.arch]) }}
+  RUNNER: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] || 'ubuntu-latest' }}
 
 jobs:
   example:
