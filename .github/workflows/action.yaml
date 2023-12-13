@@ -12,6 +12,8 @@ on:
       arch:
         required: false
         default: "amd64"
+      runs-on:
+        required: false
       githubRunnersByArch:
         required: false
         default: '{"amd64": "ubuntu-latest"}'
@@ -23,6 +25,6 @@ env:
 
 jobs:
   example:
-    runs-on: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] || vars.RUNS_ON || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runs-on || vars.RUNS_ON || 'ubuntu-latest' }}
     steps:
       - run: echo "I'm running ${{ env.RUNS_ON_CIRCLECI }} ${{ env.RUNS_ON_GITHUB }} ${{ github.runner }}"
