@@ -9,11 +9,21 @@ on:
         type: boolean
         default: false
         description: "check that everything is published correctly"
+    inputs:
+      arch:
+        required: false
+        default: "amd64"
 env:
   CHECK: ${{ inputs.check || false }}
-  FOO: toJSON({"a": "b", "b" :${{inputs.check}} })
+  ARCH: ${{ inputs.arch || 'amd64' }}
+  GITHUB_RUNNERS_BY_ARCH: '{"amd64": "ubuntu-latest"}'
+  RUNS_ON_CIRCLECI: ${{ !(fromJSON(${{ env.GITHUB_RUNNERS_BY_ARCH}})[${{env.ARCH}}]) }}
+  RUNS_ON_GITHUB: ${{ !!(fromJSON(${{ env.GITHUB_RUNNERS_BY_ARCH}})[${{env.ARCH}}]) }}
+  RUNNER: |-
+    ${{fromJSON(${{ env.GITHUB_RUNNERS_BY_ARCH}})[${{env.ARCH}}] || "ubuntu-latest" }}
+
 jobs:
   example:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "I'm running $FOO"
+      - run: echo "I'm running ${{ env.RUNS_ON_CIRCLECI }} ${{ env.RUNS_ON_GITHUB }} ${{ env.RUNNER }}"
