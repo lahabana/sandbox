@@ -18,7 +18,7 @@ env:
   GITHUB_RUNNERS_BY_ARCH: '{"amd64": "ubuntu-latest"}'
   RUNS_ON_CIRCLECI: ${{ !(fromJSON(github.env.GITHUB_RUNNERS_BY_ARCH)[github.env.ARCH]) }}
   RUNS_ON_GITHUB: ${{ !(fromJSON(github.env.GITHUB_RUNNERS_BY_ARCH)[github.env.ARCH]) }}
-  RUNNER: ${{ fromJSON(github.env.GITHUB_RUNNERS_BY_ARCH)[github.env.ARCH] || "ubuntu-latest" }}
+  RUNNER: ${{ fromJSON(github.env.GITHUB_RUNNERS_BY_ARCH)[github.env.ARCH] || 'ubuntu-latest' }}
 
 jobs:
   example:
