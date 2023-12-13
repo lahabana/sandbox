@@ -25,4 +25,4 @@ jobs:
   example:
     runs-on: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] || vars.RUNS_ON || 'ubuntu-latest' }}
     steps:
-      - run: echo "I'm running ${{ env.RUNS_ON_CIRCLECI }} ${{ env.RUNS_ON_GITHUB }} ${{ env.RUNNER }}"
+      - run: echo "I'm running ${{ env.RUNS_ON_CIRCLECI }} ${{ env.RUNS_ON_GITHUB }} ${{ github.runner }}"
