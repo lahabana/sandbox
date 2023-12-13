@@ -18,8 +18,8 @@ on:
 env:
   CHECK: ${{ inputs.check || false }}
   ARCH: ${{ inputs.arch || 'amd64' }}
-  RUNS_ON_CIRCLECI: ${{ !(fromJSON(inputs.githubRunnersByArch)[inputs.arch]) }}
-  RUNS_ON_GITHUB: ${{ !(fromJSON(inputs.githubRunnersByArch)[inputs.arch]) }}
+  RUNS_ON_CIRCLECI: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] }}
+  RUNS_ON_GITHUB: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] }}
   RUNNER: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] || 'ubuntu-latest' }}
 
 jobs:
