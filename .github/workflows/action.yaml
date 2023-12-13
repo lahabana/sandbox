@@ -22,6 +22,6 @@ env:
 
 jobs:
   example:
-    runs-on: ${{ env.RUNNER }} 
+    runs-on: ${{ github.env.RUNNER }} 
     steps:
       - run: echo "I'm running ${{ env.RUNS_ON_CIRCLECI }} ${{ env.RUNS_ON_GITHUB }} ${{ env.RUNNER }}"
