@@ -14,6 +14,7 @@ jobs:
   test_env:
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ inputs.env }}
       - run: echo ${{ inputs.env }} >> $GITHUB_ENV
       - run: env 
   bar:

@@ -31,10 +31,7 @@ jobs:
       - id: set-env
         run: |
           echo "env<<EOF" >> $GITHUB_OUTPUT
-          echo "
-            FOO=${{ env.FOO }}
-            ARCH=${{ env.ARCH }}
-            CHECK=${{ env.CHECK }}" >> $GITHUB_OUTPUT
+          echo "${{ toJSON(env) }}" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
   other:
     needs: [check]
