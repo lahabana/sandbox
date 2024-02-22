@@ -26,7 +26,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     outputs:
-      env: ${{ fromJSON(toJSON(env)) }}
+      env: ${{ toJSON(env) }}
     steps:
       - id: set-env
         run: |
