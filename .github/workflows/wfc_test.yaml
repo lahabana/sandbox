@@ -14,9 +14,11 @@ jobs:
   test_env:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ inputs.env }}
-      - run: echo ${{ inputs.env }} >> $GITHUB_ENV
-      - run: env 
+      - run: |
+          for i in $( echo "${{ inputs.env }}" | jq -r 'to_entries | .[] | .key + "=" + (.value | tostring)'); do
+            echo ${i} >> $GITHUB_ENV
+          done
+      - run: env
   bar:
     runs-on: ubuntu-latest
     needs: [test_env]
