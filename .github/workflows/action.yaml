@@ -20,6 +20,7 @@ on:
 env:
   CHECK: ${{ inputs.check || false }}
   ARCH: ${{ inputs.arch || 'amd64' }}
+  FOO: "hello"
   RUNS_ON_CIRCLECI: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] == '' }}
   RUNS_ON_GITHUB: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] != '' }}
 
@@ -33,3 +34,7 @@ jobs:
     uses: ./.github/workflows/wfc_test.yaml
     with:
       foo: bar
+      env: |
+        FOO=${{env.FOO}}
+        ARCH=${{env.ARCH}}
+        CHECK=${{env.CHECK}}

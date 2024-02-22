@@ -4,6 +4,9 @@ on:
       foo:
         type: string
         required: true
+      env:
+        type: string
+        required: true
 env:
   PARAM: ${{ inputs.foo }}
 
@@ -11,5 +14,9 @@ jobs:
   test_env:
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ inputs.env }} >> $GITHUB_ENV
+      - run: env 
+  bar:
+    needs: [test_env]
+    steps:
       - run: env
-      - run: ${{ env.ARCH }}
