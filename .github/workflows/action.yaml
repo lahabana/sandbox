@@ -26,13 +26,11 @@ jobs:
   check:
     runs-on: ubuntu-latest
     outputs:
-      env: ${{ steps.set-env.outputs.env }}
+      env: ${{ fromJSON(env) }}
     steps:
       - id: set-env
         run: |
-          echo "env<<EOF" >> $GITHUB_OUTPUT
-          echo "${{ fromJSON(env) }}" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo hello
   other:
     needs: [check]
     uses: ./.github/workflows/wfc_test.yaml
