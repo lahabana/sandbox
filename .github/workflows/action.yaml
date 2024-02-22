@@ -30,12 +30,21 @@ jobs:
     steps:
       - run: echo "I'm running ${{ env.RUNS_ON_CIRCLECI }} ${{ env.RUNS_ON_GITHUB }} ${{ github.runner }}"
       - run: echo "inputs ${{ toJSON(inputs) }}"
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      env: ${{ steps.set-env.outputs.env
+    steps:
+      - id: set-env
+        run: |
+          echo "env=<<EOF" >> $GITHUB_OUTPUT
+          echo "FOO=${{ env.FOO }}" >> $GITHUB_OUTPUT
+          echo "ARCH=${{ env.ARCH }}" >> $GITHUB_OUTPUT
+          echo "CHECK=${{ env.CHECK }}" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
   other:
+    needs: [check]
     uses: ./.github/workflows/wfc_test.yaml
     with:
       foo: bar
-      env: |
-        FOO=${{ env.FOO }}
-        ARCH=${{ env.ARCH }}
-        CHECK=${{ env.CHECK }}
-
+      env: ${{ needs.check.outputs.env }}
