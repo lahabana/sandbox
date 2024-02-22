@@ -33,7 +33,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     outputs:
-      env: ${{ steps.set-env.outputs.env
+      env: ${{ steps.set-env.outputs.env }}
     steps:
       - id: set-env
         run: |
