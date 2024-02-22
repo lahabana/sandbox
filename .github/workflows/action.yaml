@@ -21,15 +21,8 @@ env:
   CHECK: ${{ inputs.check || false }}
   ARCH: ${{ inputs.arch || 'amd64' }}
   FOO: "hello"
-  RUNS_ON_CIRCLECI: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] == '' }}
-  RUNS_ON_GITHUB: ${{ fromJSON(inputs.githubRunnersByArch)[inputs.arch] != '' }}
 
 jobs:
-  example:
-    runs-on: ${{ inputs.runs-on || vars.RUNS_ON || 'ubuntu-latest' }}
-    steps:
-      - run: echo "I'm running ${{ env.RUNS_ON_CIRCLECI }} ${{ env.RUNS_ON_GITHUB }} ${{ github.runner }}"
-      - run: echo "inputs ${{ toJSON(inputs) }}"
   check:
     runs-on: ubuntu-latest
     outputs:
