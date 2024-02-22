@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          for i in $( echo "${{ inputs.env }}" | jq -r 'to_entries | .[] | .key + "=" + (.value | tostring)'); do
+          for i in $( echo '${{ inputs.env }}' | jq -r 'to_entries | .[] | .key + "=" + (.value | tostring)'); do
             echo ${i} >> $GITHUB_ENV
           done
       - run: env
