@@ -30,7 +30,7 @@ jobs:
     steps:
       - id: set-env
         run: |
-          echo "env=<<EOF" >> $GITHUB_OUTPUT
+          echo "env<<EOF" >> $GITHUB_OUTPUT
           echo "
             FOO=${{ env.FOO }}
             ARCH=${{ env.ARCH }}
