@@ -11,4 +11,4 @@ jobs:
   test_env:
     runs-on: ubuntu-latest
     steps:
-      run: env
+      - run: env
