@@ -35,6 +35,7 @@ jobs:
     with:
       foo: bar
       env: |
-        FOO=${{env.FOO}}
-        ARCH=${{env.ARCH}}
-        CHECK=${{env.CHECK}}
+        FOO=${{ env.FOO }}
+        ARCH=${{ env.ARCH }}
+        CHECK=${{ env.CHECK }}
+
