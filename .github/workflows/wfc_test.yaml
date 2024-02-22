@@ -1,0 +1,14 @@
+on:
+  workflow_call:
+    inputs:
+      foo:
+        type: string
+        required: true
+env:
+  PARAM: ${{ inputs.foo }}
+
+jobs:
+  test_env:
+    runs-on: ubuntu-latest
+    steps:
+      run: env
