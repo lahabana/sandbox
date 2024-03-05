@@ -37,3 +37,9 @@ jobs:
     with:
       foo: bar
       env: ${{ needs.check.outputs.env }}
+  numCPU:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v5
+    - run: go run test.go
