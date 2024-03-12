@@ -9,7 +9,10 @@ func main() {
 
 	println("Hello")
 	println("::group:: my info")
+	println("::group:: inside the group")
 	println("Some cool text")
+	println("::endgroup::")
+	println("Some outside cool text")
 	println("Evan more data")
 	println("::endgroup::")
 }
