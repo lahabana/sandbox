@@ -8,7 +8,7 @@ func main() {
 	println(runtime.NumCPU())
 
 	println("Hello")
-	println("::group:: my info")
+	println("::group::::error::my info")
 	println("::group:: inside the group")
 	println("Some cool text")
 	println("::endgroup::")
