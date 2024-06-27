@@ -33,7 +33,6 @@ jobs:
           echo hello
           echo ${{ env.FOO }}
           echo ${{ fromJSON(vars.NOT_A_THING || 10) }}
-          echo ${{ fromJSON(vars.NO_GOOD ) }}
   other:
     needs: [check]
     uses: ./.github/workflows/wfc_test.yaml
