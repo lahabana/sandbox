@@ -25,6 +25,7 @@ env:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: ${{ fromJSON(vars.NOPE || 10) }}
     outputs:
       env: ${{ toJSON(env) }}
     steps:
