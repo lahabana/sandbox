@@ -20,7 +20,7 @@ on:
 env:
   CHECK: ${{ inputs.check || false }}
   ARCH: ${{ inputs.arch || 'amd64' }}
-  FOO: ${{ fromJSON(vars.NOT_EXIST || 10)
+  FOO: ${{ fromJSON(vars.NOT_EXIST || 10) }}
 
 jobs:
   check:
