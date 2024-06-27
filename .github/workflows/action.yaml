@@ -20,7 +20,7 @@ on:
 env:
   CHECK: ${{ inputs.check || false }}
   ARCH: ${{ inputs.arch || 'amd64' }}
-  FOO: "hello"
+  FOO: ${{ fromJSON(vars.NOT_EXIST || 10)
 
 jobs:
   check:
@@ -31,6 +31,9 @@ jobs:
       - id: set-env
         run: |
           echo hello
+          echo ${{ env.FOO }}
+          echo ${{ fromJSON(vars.NOT_A_THING || 10) }}
+          echo ${{ fromJSON(vars.NO_GOOD ) }}
   other:
     needs: [check]
     uses: ./.github/workflows/wfc_test.yaml
