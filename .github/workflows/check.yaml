@@ -19,7 +19,7 @@ jobs:
         with:
           header: PR reviewer checklist
           only_create: true
-          message:
+          message: |
             :mag: Each of these sections need to be checked by the reviewer of the PR :mag::
             If something doesn't apply please check the box and add a justification if the reason is non obvious.
             
