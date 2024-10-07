@@ -20,7 +20,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           CHECKLIST_MESSAGE: |
         run: |
-          cat <<EOF
+          cat <<EOF | gh pr comment -R "${{ github.repository }}" "${{ github.event.pull_request.number }}" -F -
             :mag: Each of these sections need to be checked by the reviewer of the PR :mag::
             
             If something doesn't apply please check the box and add a justification if the reason is non obvious.
@@ -35,7 +35,7 @@ jobs:
             - [ ] Does it need to be backported according to the [backporting policy](../blob/master/CONTRIBUTING.md#backporting)? ([this](https://github.com/kumahq/kuma/actions/workflows/auto-backport.yaml) GH action will add "backport" label based on these [file globs](https://github.com/kumahq/kuma/blob/master/.github/workflows/auto-backport.yaml#L6), if you want to prevent it from adding the "backport" label use [no-backport-autolabel](https://github.com/kumahq/kuma/blob/master/.github/workflows/auto-backport.yaml#L8) label)
             [1]: https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword
 
-          EOF | gh pr comment -R "${{ github.repository }}" "${{ github.event.pull_request.number }}" -F -
+          EOF      
       - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
       - name: Check PR title
         # This job checks the PR title using
