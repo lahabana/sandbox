@@ -26,7 +26,7 @@ jobs:
         # See
         # https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges#merge-message-for-a-squash-merge
         # for more info. We have "Default to PR title for squash merge commits" enabled.
-        if: github.event.action != 'synchronize'
+        if: github.event.action != 'synchronize' && false
         # Inject as env variable to escape properly
         env:
           TITLE: ${{ github.event.pull_request.title }}
