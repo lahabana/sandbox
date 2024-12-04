@@ -47,4 +47,4 @@ body:
       - [ ] User-acceptance testing (someone not involved in the project tries the guide and the feature)
       ```
   validations:
-    required: false
+    required: true
