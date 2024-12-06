@@ -1,6 +1,6 @@
 name: ☔ Umbrella
 description: Use this template to propose a new feature or enhancement that requires multiple changes across the project.
-labels: [ umbrella ]
+labels: [ epic ]
 title: ☔
 body:
 - type: checkboxes
@@ -35,16 +35,12 @@ body:
   attributes:
     label: Acceptance Criteria
     value: |
-      ```[tasklist]
       ### Implementation
       - [ ] Design
       - [ ] Code
-      ```
 
-      ```[tasklist]
       ### Docs 
       - [ ] Guide and required documentation
       - [ ] User-acceptance testing (someone not involved in the project tries the guide and the feature)
-      ```
   validations:
     required: true
